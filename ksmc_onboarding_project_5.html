@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع التهيئة والتوجيه | KSMC</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap');
+
+        :root {
+            --primary: #0d6e3f;
+            --primary-light: #e8f5ee;
+            --primary-dark: #094d2c;
+            --accent: #c8a951;
+            --accent-light: #faf4e2;
+            --blue: #1565c0;
+            --blue-light: #e3f2fd;
+            --purple: #6a1b9a;
+            --purple-light: #f3e5f5;
+            --orange: #e65100;
+            --orange-light: #fff3e0;
+            --red: #c62828;
+            --red-light: #fce4ec;
+            --teal: #00796b;
+            --teal-light: #e0f2f1;
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #5a6072;
+            --border: #e2e6ed;
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 32px rgba(0,0,0,0.12);
+            --radius: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, #1a3a6b 0%, #1e5a8a 30%, #0d6e3f 70%, #094d2c 100%);
+            color: white;
+            padding: 50px 24px 65px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 15% 85%, rgba(200,169,81,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(255,255,255,0.08) 0%, transparent 35%),
+                radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 60%);
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M40 10 L45 25 L60 25 L48 33 L52 48 L40 38 L28 48 L32 33 L20 25 L35 25Z'/%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='70' cy='70' r='2'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .header-skyline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            opacity: 0.06;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .logo-drop-zone {
+            width: 130px; height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px dashed rgba(255,255,255,0.25);
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .logo-drop-zone:hover {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .logo-drop-zone.has-logo {
+            border-style: solid;
+            border-color: rgba(255,255,255,0.15);
+            padding: 10px;
+        }
+
+        .logo-drop-zone img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-drop-zone .drop-label {
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.7;
+            line-height: 1.4;
+            pointer-events: none;
+        }
+
+        .logo-drop-zone .drop-label .drop-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .logo-drop-zone.has-logo .drop-label { display: none; }
+        .logo-drop-zone input[type="file"] { display: none; }
+
+        .logo-divider-v {
+            width: 2px;
+            height: 70px;
+            background: linear-gradient(to bottom, transparent, rgba(200,169,81,0.5), transparent);
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 900;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .header .org-name {
+            font-size: 15px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        .header h2 {
+            font-size: 21px;
+            font-weight: 500;
+            margin-top: 10px;
+            opacity: 0.9;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+        }
+
+        .header-badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .h-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* ===== NAV TABS ===== */
+        .nav-section {
+            max-width: 1100px;
+            margin: -28px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .nav-tabs {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 16px 12px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+            white-space: nowrap;
+            min-width: 120px;
+        }
+
+        .nav-tab:hover {
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .nav-tab .tab-icon {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        /* ===== PAGES ===== */
+        .page {
+            display: none;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px 60px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== PAGE: OVERVIEW ===== */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-card .stat-icon {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .stat-card .stat-label {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Journey Map */
+        .journey-section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .journey-timeline {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .journey-step {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            position: relative;
+            padding: 0 8px;
+        }
+
+        .journey-step::after {
+            content: '';
+            position: absolute;
+            top: 28px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .journey-step:last-child::after { display: none; }
+
+        .step-circle {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 12px;
+            position: relative;
+            z-index: 1;
+            border: 3px solid white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+
+        .step-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .step-time {
+            font-size: 11px;
+            color: var(--text-light);
+            background: var(--bg);
+            padding: 2px 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* ===== COMPONENTS GRID ===== */
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .component-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .component-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .comp-header {
+            padding: 20px 24px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .comp-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .comp-info h3 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .comp-info .comp-status {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .status-done { background: var(--primary-light); color: var(--primary); }
+        .status-progress { background: var(--blue-light); color: var(--blue); }
+        .status-pending { background: var(--orange-light); color: var(--orange); }
+        .status-planned { background: #f5f5f5; color: #757575; }
+
+        .comp-body {
+            padding: 0 24px 20px;
+        }
+
+        .comp-body p {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .comp-features {
+            list-style: none;
+        }
+
+        .comp-features li {
+            font-size: 13px;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comp-features li:last-child { border-bottom: none; }
+
+        .comp-features .feat-icon {
+            font-size: 14px;
+        }
+
+        .comp-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .tech-tag {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ===== PAGE: DETAIL SECTIONS ===== */
+        .detail-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .detail-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .detail-header .d-icon {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+
+        .detail-header h3 {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .detail-header p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .detail-body {
+            padding: 24px 28px;
+        }
+
+        .detail-body h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .feature-list li {
+            padding: 10px 14px;
+            background: var(--bg);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .feature-list .f-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-list .f-text strong {
+            display: block;
+            font-weight: 700;
+        }
+
+        .feature-list .f-text span {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* AI Chat Preview */
+        .chat-preview {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 20px;
+            max-width: 500px;
+        }
+
+        .chat-bubble {
+            padding: 12px 16px;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            max-width: 85%;
+            line-height: 1.6;
+        }
+
+        .chat-user {
+            background: var(--primary);
+            color: white;
+            margin-left: auto;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-bot {
+            background: white;
+            color: var(--text);
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .chat-bot .bot-name {
+            font-size: 11px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Survey Preview */
+        .survey-preview {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        .survey-q {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-right: 4px solid var(--primary);
+        }
+
+        .survey-q .q-num {
+            font-size: 11px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .survey-q .q-text {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 4px 0 8px;
+        }
+
+        .survey-stars {
+            display: flex;
+            gap: 4px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .star { color: #ddd; transition: color 0.2s; }
+        .star.active { color: var(--accent); }
+
+        /* Email Preview */
+        .email-preview {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            max-width: 500px;
+        }
+
+        .email-toolbar {
+            padding: 10px 16px;
+            background: #f8f9fa;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 8px;
+        }
+
+        .email-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+        }
+
+        .email-header-row {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .email-header-row strong {
+            color: var(--text-light);
+            margin-left: 8px;
+        }
+
+        .email-body-content {
+            padding: 20px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .email-ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--purple-light);
+            color: var(--purple);
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Google Sheet Preview */
+        .sheet-preview {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .sheet-toolbar-bar {
+            padding: 8px 12px;
+            background: #1a8e4a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 13px;
+        }
+
+        .sheet-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .sheet-table th {
+            background: #f1f3f4;
+            padding: 8px 10px;
+            font-weight: 600;
+            text-align: right;
+            border: 1px solid #e0e0e0;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .sheet-table td {
+            padding: 8px 10px;
+            border: 1px solid #e0e0e0;
+            text-align: right;
+        }
+
+        .cell-green { background: #e8f5e9; color: #2e7d32; font-weight: 600; }
+        .cell-yellow { background: #fff8e1; color: #f57f17; font-weight: 600; }
+        .cell-red { background: #fce4ec; color: #c62828; font-weight: 600; }
+
+        /* Roadmap */
+        .roadmap-phase {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .phase-marker {
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: white;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .phase-marker::after {
+            content: '';
+            position: absolute;
+            top: 48px;
+            left: 50%;
+            width: 2px;
+            height: 80px;
+            background: var(--border);
+            transform: translateX(-50%);
+        }
+
+        .roadmap-phase:last-child .phase-marker::after { display: none; }
+
+        .phase-content {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .phase-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .phase-content .phase-time {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .phase-tasks {
+            list-style: none;
+        }
+
+        .phase-tasks li {
+            font-size: 13px;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 13px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            background: white;
+        }
+
+        .footer strong { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .overview-grid { grid-template-columns: 1fr; }
+            .components-grid { grid-template-columns: 1fr; }
+            .journey-timeline { flex-direction: column; }
+            .journey-step::after { display: none; }
+            .nav-tab { font-size: 12px; padding: 12px 8px; min-width: 80px; }
+            .nav-tab .tab-icon { font-size: 18px; }
+            .roadmap-phase { flex-direction: column; align-items: center; }
+            .phase-marker::after { display: none; }
+        }
+
+        @media print {
+            .nav-section { display: none; }
+            .page { display: block !important; page-break-before: always; }
+            .component-card, .detail-card { break-inside: avoid; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-skyline">
+            <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+                <g fill="white">
+                    <rect x="50" y="30" width="35" height="70" rx="2"/>
+                    <rect x="90" y="50" width="25" height="50" rx="2"/>
+                    <rect x="120" y="15" width="30" height="85" rx="2"/>
+                    <rect x="155" y="40" width="40" height="60" rx="2"/>
+                    <rect x="200" y="55" width="25" height="45" rx="2"/>
+                    <rect x="250" y="20" width="20" height="80" rx="2"/>
+                    <rect x="275" y="45" width="35" height="55" rx="2"/>
+                    <rect x="320" y="60" width="28" height="40" rx="2"/>
+                    <rect x="370" y="10" width="25" height="90" rx="2"/>
+                    <rect x="400" y="35" width="40" height="65" rx="2"/>
+                    <rect x="450" y="50" width="30" height="50" rx="2"/>
+                    <rect x="530" y="20" width="50" height="80" rx="3"/>
+                    <rect x="545" y="30" width="6" height="20" fill="#1a3a6b" rx="1"/>
+                    <rect x="541" y="36" width="14" height="6" fill="#1a3a6b" rx="1"/>
+                    <rect x="600" y="45" width="35" height="55" rx="2"/>
+                    <rect x="650" y="25" width="28" height="75" rx="2"/>
+                    <rect x="690" y="55" width="40" height="45" rx="2"/>
+                    <rect x="750" y="15" width="22" height="85" rx="2"/>
+                    <rect x="780" y="40" width="35" height="60" rx="2"/>
+                    <rect x="830" y="60" width="30" height="40" rx="2"/>
+                    <rect x="880" y="30" width="25" height="70" rx="2"/>
+                    <rect x="920" y="50" width="40" height="50" rx="2"/>
+                    <rect x="975" y="20" width="30" height="80" rx="2"/>
+                    <rect x="1020" y="45" width="35" height="55" rx="2"/>
+                    <rect x="1070" y="55" width="25" height="45" rx="2"/>
+                    <rect x="1110" y="35" width="40" height="65" rx="2"/>
+                    <rect x="1160" y="50" width="30" height="50" rx="2"/>
+                </g>
+            </svg>
+        </div>
+        <div class="header-content">
+            <div class="header-top">
+                <div class="logo-drop-zone" id="logo-ksmc" onclick="document.getElementById('file-ksmc').click()" title="اضغط أو اسحب شعار KSMC هنا">
+                    <span class="drop-label"><span class="drop-icon">🏥</span>اسحب شعار<br>KSMC هنا</span>
+                    <input type="file" id="file-ksmc" accept="image/*" onchange="loadLogo(this,'logo-ksmc')">
+                </div>
+                <div class="logo-divider-v"></div>
+                <div class="logo-drop-zone" id="logo-rfhc" onclick="document.getElementById('file-rfhc').click()" title="اضغط أو اسحب شعار التجمع هنا">
+                    <span class="drop-label"><span class="drop-icon">⭐</span>اسحب شعار<br>التجمع هنا</span>
+                    <input type="file" id="file-rfhc" accept="image/*" onchange="loadLogo(this,'logo-rfhc')">
+                </div>
+                <div>
+                    <h1>مشروع التهيئة والتوجيه</h1>
+                    <p class="org-name">مدينة الملك سعود الطبية — تجمع الرياض الصحي الأول</p>
+                </div>
+            </div>
+            <h2>رحلة الموظف الجديد المدعومة بالذكاء الاصطناعي</h2>
+            <div class="header-badges">
+                <span class="h-badge">🤖 ذكاء اصطناعي</span>
+                <span class="h-badge">📊 تتبع تلقائي</span>
+                <span class="h-badge">🗺️ خريطة تفاعلية</span>
+                <span class="h-badge">📧 إيميلات ذكية</span>
+                <span class="h-badge">📋 استبيان آلي</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="nav-section">
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showPage('overview')">
+                <span class="tab-icon">🏠</span>نظرة عامة
+            </div>
+            <div class="nav-tab" onclick="showPage('components')">
+                <span class="tab-icon">🧩</span>المكونات
+            </div>
+            <div class="nav-tab" onclick="showPage('ai')">
+                <span class="tab-icon">🤖</span>المساعد الذكي
+            </div>
+            <div class="nav-tab" onclick="showPage('survey')">
+                <span class="tab-icon">📋</span>الاستبيان
+            </div>
+            <div class="nav-tab" onclick="showPage('email')">
+                <span class="tab-icon">📧</span>الإيميلات
+            </div>
+            <div class="nav-tab" onclick="showPage('tracker')">
+                <span class="tab-icon">📊</span>التتبع
+            </div>
+            <div class="nav-tab" onclick="showPage('roadmap')">
+                <span class="tab-icon">🗓️</span>خارطة الطريق
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE: OVERVIEW ===== -->
+    <div class="page active" id="page-overview">
+
+        <div class="overview-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🧩</div>
+                <div class="stat-value">7</div>
+                <div class="stat-label">مكونات المشروع</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-value">180</div>
+                <div class="stat-label">يوم — مدة فترة التجربة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">نقاط تكامل مع AI</div>
+            </div>
+        </div>
+
+        <!-- Journey Map -->
+        <div class="journey-section">
+            <div class="section-title">🗺️ خريطة رحلة الموظف الجديد</div>
+            <div class="journey-timeline">
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--primary);">📩</div>
+                    <div class="step-title">قبل المباشرة</div>
+                    <div class="step-time">قبل اليوم الأول</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--blue);">🤝</div>
+                    <div class="step-title">الاستقبال والتهيئة</div>
+                    <div class="step-time">اليوم ١</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--purple);">💻</div>
+                    <div class="step-title">الأنظمة والحسابات</div>
+                    <div class="step-time">اليوم ٢-٣</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--orange);">📚</div>
+                    <div class="step-title">التدريب والتعريف</div>
+                    <div class="step-time">الأسبوع ١</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--teal);">🤖</div>
+                    <div class="step-title">المساعد الذكي</div>
+                    <div class="step-time">مستمر</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--accent);">📋</div>
+                    <div class="step-title">استبيان ٣٠ يوم</div>
+                    <div class="step-time">اليوم ٣٠</div>
+                </div>
+                <div class="journey-step">
+                    <div class="step-circle" style="background: var(--red);">⭐</div>
+                    <div class="step-title">تقييم فترة التجربة</div>
+                    <div class="step-time">اليوم ١٨٠</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Components Overview -->
+        <div class="section-title" style="margin-bottom: 20px;">🧩 مكونات المشروع</div>
+        <div class="components-grid">
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--primary-light); color: var(--primary);">📋</div>
+                    <div class="comp-info">
+                        <h3>خطة الأسبوع الأول</h3>
+                        <span class="comp-status status-done">✓ مكتمل</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>جدول يومي تفاعلي بتشيك لست لكل مهام الأسبوع الأول مع شريط تقدم</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">✅</span> جدول من الأحد إلى الخميس</li>
+                        <li><span class="feat-icon">✅</span> تشيك لست تفاعلي</li>
+                        <li><span class="feat-icon">✅</span> شريط تقدم حي</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--purple-light); color: var(--purple);">🤖</div>
+                    <div class="comp-info">
+                        <h3>المساعد الشخصي AI</h3>
+                        <span class="comp-status status-pending">قيد التطوير</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>مساعد ذكي يجاوب أسئلة الموظف الجديد ويوجهه خطوة بخطوة</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">🧠</span> إجابة فورية على الأسئلة</li>
+                        <li><span class="feat-icon">📍</span> توجيه للمواقع والخدمات</li>
+                        <li><span class="feat-icon">📞</span> أرقام وجهات الاتصال</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--teal-light); color: var(--teal);">🗺️</div>
+                    <div class="comp-info">
+                        <h3>الخريطة التفاعلية</h3>
+                        <span class="comp-status status-pending">قيد التطوير</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>خريطة شاملة لمستشفيات ومرافق المدينة الطبية بالكامل</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">🏥</span> جميع المستشفيات والمباني</li>
+                        <li><span class="feat-icon">🔍</span> بحث سريع بالاسم</li>
+                        <li><span class="feat-icon">📍</span> تحديد الموقع والتنقل</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--blue-light); color: var(--blue);">📋</div>
+                    <div class="comp-info">
+                        <h3>استبيان ٣٠ يوم</h3>
+                        <span class="comp-status status-pending">قيد التطوير</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>استبيان تلقائي يُرسل بعد ٣٠ يوم لقياس كفاءة التهيئة والصعوبات</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">📤</span> إرسال تلقائي بعد ٣٠ يوم</li>
+                        <li><span class="feat-icon">📊</span> تقارير وتحليلات</li>
+                        <li><span class="feat-icon">💡</span> اقتراحات تحسين بالـ AI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--orange-light); color: var(--orange);">📧</div>
+                    <div class="comp-info">
+                        <h3>الإيميلات الذكية</h3>
+                        <span class="comp-status status-pending">قيد التطوير</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>إيميلات مدعومة بـ AI للترحيب والتذكير والتنبيهات التلقائية</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">🤖</span> محتوى مخصص بالـ AI</li>
+                        <li><span class="feat-icon">⏰</span> تنبيه تقييم فترة التجربة</li>
+                        <li><span class="feat-icon">📩</span> إشعار المدير المباشر</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--accent-light); color: var(--accent);">📊</div>
+                    <div class="comp-info">
+                        <h3>تتبع المهام — Google Sheets</h3>
+                        <span class="comp-status status-pending">قيد التطوير</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>ربط Google Sheets بتقدم مهام الموظف مع تنبيهات للتأخير</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">📈</span> تتبع مباشر للتقدم</li>
+                        <li><span class="feat-icon">🔔</span> تنبيهات تلقائية للتأخير</li>
+                        <li><span class="feat-icon">📉</span> لوحة بيانات للإدارة</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="component-card">
+                <div class="comp-header">
+                    <div class="comp-icon" style="background: var(--red-light); color: var(--red);">⭐</div>
+                    <div class="comp-info">
+                        <h3>تنبيه تقييم فترة التجربة</h3>
+                        <span class="comp-status status-pending">قيد التطوير</span>
+                    </div>
+                </div>
+                <div class="comp-body">
+                    <p>إشعارات تلقائية للموظف والمدير قبل انتهاء فترة التجربة</p>
+                    <ul class="comp-features">
+                        <li><span class="feat-icon">📩</span> إيميل تنبيه للموظف</li>
+                        <li><span class="feat-icon">👤</span> إشعار المدير المباشر</li>
+                        <li><span class="feat-icon">📅</span> عد تنازلي تلقائي</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== PAGE: COMPONENTS DETAIL ===== -->
+    <div class="page" id="page-components">
+        <div class="section-title">🧩 تفاصيل المكونات</div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--primary-light); color: var(--primary);">📋</div>
+                <div>
+                    <h3>١. خطة الأسبوع الأول</h3>
+                    <p>تم الإنجاز ✓ — صفحة HTML تفاعلية</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <h4>المزايا المطبقة</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">📅</span>
+                        <div class="f-text">
+                            <strong>جدول يومي من الأحد للخميس</strong>
+                            <span>كل يوم يحتوي مهام محددة مع وصف تفصيلي</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">☑️</span>
+                        <div class="f-text">
+                            <strong>تشيك لست تفاعلي</strong>
+                            <span>الموظف يأشر على كل مهمة يخلصها</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📊</span>
+                        <div class="f-text">
+                            <strong>شريط تقدم حي</strong>
+                            <span>يتحدث تلقائياً مع كل تأشيرة</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🏥</span>
+                        <div class="f-text">
+                            <strong>هوية KSMC</strong>
+                            <span>بألوان وشعار مدينة الملك سعود الطبية</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--purple-light); color: var(--purple);">🤖</div>
+                <div>
+                    <h3>٢. المساعد الشخصي بالذكاء الاصطناعي</h3>
+                    <p>يجاوب أسئلة الموظف الجديد على مدار الساعة</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <h4>السيناريوهات المستهدفة</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">❓</span>
+                        <div class="f-text">
+                            <strong>الأسئلة المتكررة</strong>
+                            <span>وين أروح؟ كيف أفعّل حسابي؟ وش خطوتي الجاية؟</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🗺️</span>
+                        <div class="f-text">
+                            <strong>التوجيه المكاني</strong>
+                            <span>ربط مع الخريطة التفاعلية لتوجيه الموظف للموقع الصحيح</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📞</span>
+                        <div class="f-text">
+                            <strong>دليل الاتصال</strong>
+                            <span>أرقام وتحويلات الأقسام والخدمات المساندة</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📋</span>
+                        <div class="f-text">
+                            <strong>متابعة المهام</strong>
+                            <span>يذكّر الموظف بالمهام المتبقية ويوجهه للخطوة التالية</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--teal-light); color: var(--teal);">🗺️</div>
+                <div>
+                    <h3>٣. الخريطة التفاعلية لمدينة الملك سعود الطبية</h3>
+                    <p>خريطة شاملة لكل المستشفيات والمرافق والخدمات</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <h4>المحتوى المطلوب</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">🏥</span>
+                        <div class="f-text">
+                            <strong>المستشفيات والمباني الرئيسية</strong>
+                            <span>جميع مستشفيات ومباني المدينة الطبية مع التفاصيل</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🍽️</span>
+                        <div class="f-text">
+                            <strong>الخدمات المساندة</strong>
+                            <span>المطاعم، المواقف، الصيدليات، المختبرات، الخ</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🔍</span>
+                        <div class="f-text">
+                            <strong>بحث وتصفية</strong>
+                            <span>البحث بالاسم أو النوع مع فلاتر سريعة</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📱</span>
+                        <div class="f-text">
+                            <strong>متجاوب مع الجوال</strong>
+                            <span>يشتغل على جميع الأجهزة بسلاسة</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE: AI ASSISTANT ===== -->
+    <div class="page" id="page-ai">
+        <div class="section-title">🤖 المساعد الشخصي بالذكاء الاصطناعي</div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--purple-light); color: var(--purple);">💬</div>
+                <div>
+                    <h3>محاكاة المحادثة</h3>
+                    <p>كذا بيكون شكل التفاعل مع المساعد الذكي</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="chat-preview">
+                    <div class="chat-bubble chat-user">السلام عليكم، أنا موظف جديد كيف أفعّل بصمة الجوال في موارد حياك؟</div>
+                    <div class="chat-bubble chat-bot">
+                        <div class="bot-name">🤖 مساعد KSMC</div>
+                        أهلاً وسهلاً فيك! 👋 البصمة تكون عن طريق الجوال من خلال تطبيق موارد (حياك).
+                        <br><br>
+                        📱 الخطوات:<br>
+                        ١. حمّل تطبيق "موارد حياك" من المتجر<br>
+                        ٢. سجّل دخول ببيانات موارد<br>
+                        ٣. فعّل خاصية البصمة
+                        <br><br>
+                        هل تحتاج مساعدة في خطوة معينة؟
+                    </div>
+                    <div class="chat-bubble chat-user">وين مكان البرنامج التعريفي؟</div>
+                    <div class="chat-bubble chat-bot">
+                        <div class="bot-name">🤖 مساعد KSMC</div>
+                        📍 أقدر أوريك الموقع على الخريطة التفاعلية.
+                        <br><br>
+                        💡 نصيحة: تأكد من تفعيل حسابك في موارد قبل يوم التدريب.
+                        <br><br>
+                        هل تحتاج مساعدة في شي ثاني؟
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 24px;">قدرات المساعد</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">🧠</span>
+                        <div class="f-text">
+                            <strong>قاعدة معرفية شاملة</strong>
+                            <span>مدرّب على جميع سياسات وإجراءات KSMC</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🗺️</span>
+                        <div class="f-text">
+                            <strong>تكامل مع الخريطة</strong>
+                            <span>يفتح الخريطة ويحدد الموقع تلقائياً</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🌐</span>
+                        <div class="f-text">
+                            <strong>عربي وإنجليزي</strong>
+                            <span>يدعم اللغتين العربية والإنجليزية</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📊</span>
+                        <div class="f-text">
+                            <strong>تتبع المهام</strong>
+                            <span>يعرف وين وصل الموظف ويذكره بالمتبقي</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE: SURVEY ===== -->
+    <div class="page" id="page-survey">
+        <div class="section-title">📋 استبيان ٣٠ يوم — قياس كفاءة التهيئة</div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--blue-light); color: var(--blue);">📝</div>
+                <div>
+                    <h3>نموذج الاستبيان</h3>
+                    <p>يُرسل تلقائياً بعد ٣٠ يوم من تاريخ المباشرة</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="survey-preview">
+                    <div class="survey-q">
+                        <div class="q-num">المحور الأول: كفاءة فريق التهيئة</div>
+                        <div class="q-text">كيف تقيّم جودة الاستقبال والتوجيه في يومك الأول؟</div>
+                        <div class="survey-stars" onclick="rateStars(this, event)">
+                            <span class="star active">★</span>
+                            <span class="star active">★</span>
+                            <span class="star active">★</span>
+                            <span class="star active">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <div class="survey-q">
+                        <div class="q-num">المحور الثاني: الصعوبات والتحديات</div>
+                        <div class="q-text">ما أبرز الصعوبات التي واجهتك خلال أول ٣٠ يوم؟</div>
+                        <div style="font-size: 13px; color: var(--text-light); margin-top: 4px;">☐ تأخر تفعيل الحسابات &nbsp; ☐ عدم وضوح المهام &nbsp; ☐ صعوبة التواصل &nbsp; ☐ أخرى</div>
+                    </div>
+                    <div class="survey-q">
+                        <div class="q-num">المحور الثالث: التوقعات</div>
+                        <div class="q-text">هل كانت تجربتك الفعلية تتوافق مع توقعاتك قبل المباشرة؟</div>
+                        <div style="font-size: 13px; color: var(--text-light); margin-top: 4px;">◉ أفضل من المتوقع &nbsp; ○ كما توقعت &nbsp; ○ أقل من المتوقع</div>
+                    </div>
+                    <div class="survey-q">
+                        <div class="q-num">المحور الرابع: الاقتراحات</div>
+                        <div class="q-text">ما اقتراحاتك لتحسين تجربة التهيئة للموظفين الجدد؟</div>
+                        <div style="font-size: 12px; color: #aaa; border: 1px dashed #ddd; padding: 12px; border-radius: 8px; margin-top: 6px;">اكتب اقتراحاتك هنا...</div>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 24px;">محاور الاستبيان</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">👥</span>
+                        <div class="f-text">
+                            <strong>كفاءة فريق التهيئة</strong>
+                            <span>تقييم أداء الفريق في الاستقبال والتوجيه والمتابعة</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">⚠️</span>
+                        <div class="f-text">
+                            <strong>الصعوبات والتحديات</strong>
+                            <span>رصد المشاكل والعقبات التي واجهت الموظف</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🎯</span>
+                        <div class="f-text">
+                            <strong>التوقعات vs الواقع</strong>
+                            <span>مقارنة ما كان يتوقعه الموظف مع التجربة الفعلية</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">💡</span>
+                        <div class="f-text">
+                            <strong>اقتراحات التحسين</strong>
+                            <span>أفكار الموظفين الجدد لتطوير العملية</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🤖</span>
+                        <div class="f-text">
+                            <strong>تحليل AI للنتائج</strong>
+                            <span>الذكاء الاصطناعي يحلل الردود ويستخرج أنماط وتوصيات</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE: EMAIL ===== -->
+    <div class="page" id="page-email">
+        <div class="section-title">📧 الإيميلات الذكية المدعومة بـ AI</div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--orange-light); color: var(--orange);">📩</div>
+                <div>
+                    <h3>نموذج إيميل الترحيب</h3>
+                    <p>يُرسل تلقائياً عند تأكيد المباشرة</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="email-preview">
+                    <div class="email-toolbar">
+                        <div class="email-dot" style="background:#ff5f57"></div>
+                        <div class="email-dot" style="background:#ffbd2e"></div>
+                        <div class="email-dot" style="background:#28c940"></div>
+                    </div>
+                    <div class="email-header-row"><strong>من:</strong> فريق التهيئة والتوجيه &lt;onboarding@ksmc.med.sa&gt;</div>
+                    <div class="email-header-row"><strong>إلى:</strong> الموظف الجديد</div>
+                    <div class="email-header-row"><strong>الموضوع:</strong> 🎉 مرحباً بك في مدينة الملك سعود الطبية!</div>
+                    <div class="email-body-content">
+                        <p>السلام عليكم ورحمة الله وبركاته،</p>
+                        <p>يسعدنا انضمامك لفريق عمل مدينة الملك سعود الطبية! <span class="email-ai-badge">🤖 محتوى مخصص بالـ AI</span></p>
+                        <p>إليك ما تحتاج معرفته قبل يومك الأول:</p>
+                        <p style="padding: 10px; background: var(--primary-light); border-radius: 8px;">
+                            📅 موعد المباشرة: [يُحدد لاحقاً]<br>
+                            📍 مكان الاستقبال: [يُحدد لاحقاً]<br>
+                            ⏰ الوقت: [يُحدد لاحقاً]
+                        </p>
+                        <p>🤖 مساعدك الشخصي جاهز لأي استفسار — <a href="#" style="color: var(--primary);">اضغط هنا للتواصل</a></p>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 24px;">أنواع الإيميلات</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">🎉</span>
+                        <div class="f-text">
+                            <strong>إيميل الترحيب — قبل المباشرة</strong>
+                            <span>ترحيب + تعليمات اليوم الأول + رابط المساعد الذكي</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📋</span>
+                        <div class="f-text">
+                            <strong>إيميل خطة الأسبوع — اليوم الأول</strong>
+                            <span>رابط خطة الأسبوع التفاعلية + الخريطة</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📊</span>
+                        <div class="f-text">
+                            <strong>إيميل الاستبيان — بعد ٣٠ يوم</strong>
+                            <span>رابط الاستبيان مع رسالة تحفيزية</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">⚠️</span>
+                        <div class="f-text">
+                            <strong>تنبيه تقييم فترة التجربة — قبل انتهاء ١٨٠ يوم</strong>
+                            <span>تنبيه للموظف + إشعار للمدير المباشر بوجوب التقييم</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🔔</span>
+                        <div class="f-text">
+                            <strong>تنبيهات التأخير — حسب الحاجة</strong>
+                            <span>إذا تأخر الموظف في إكمال المهام يجيه تذكير تلقائي</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE: TRACKER ===== -->
+    <div class="page" id="page-tracker">
+        <div class="section-title">📊 تتبع المهام — Google Sheets</div>
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="d-icon" style="background: var(--accent-light); color: var(--accent);">📈</div>
+                <div>
+                    <h3>لوحة تتبع تقدم الموظفين</h3>
+                    <p>ربط تلقائي مع Google Sheets لمتابعة كل موظف جديد</p>
+                </div>
+            </div>
+            <div class="detail-body">
+                <div class="sheet-preview">
+                    <div class="sheet-toolbar-bar">📊 تتبع الموظفين الجدد — KSMC Onboarding Tracker</div>
+                    <table class="sheet-table">
+                        <thead>
+                            <tr>
+                                <th>الموظف</th>
+                                <th>القسم</th>
+                                <th>تاريخ المباشرة</th>
+                                <th>الأسبوع ١</th>
+                                <th>الأنظمة</th>
+                                <th>التدريب</th>
+                                <th>الاستبيان</th>
+                                <th>الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>أحمد محمد</td>
+                                <td>التمريض</td>
+                                <td>٢٠٢٦/٠٦/١٥</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-yellow">⏳ قيد التنفيذ</td>
+                                <td class="cell-yellow">⌛ لم يحن</td>
+                                <td class="cell-green">على المسار</td>
+                            </tr>
+                            <tr>
+                                <td>سارة العتيبي</td>
+                                <td>المختبرات</td>
+                                <td>٢٠٢٦/٠٦/٠٨</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-red">⚠️ متأخر</td>
+                                <td class="cell-yellow">⏳ قيد التنفيذ</td>
+                                <td class="cell-yellow">⌛ لم يحن</td>
+                                <td class="cell-red">يحتاج متابعة</td>
+                            </tr>
+                            <tr>
+                                <td>خالد السبيعي</td>
+                                <td>الصيدلة</td>
+                                <td>٢٠٢٦/٠٥/٢٠</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-green">✓ مكتمل</td>
+                                <td class="cell-green">مكتمل</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 style="margin-top: 24px;">آلية العمل</h4>
+                <ul class="feature-list">
+                    <li>
+                        <span class="f-icon">🔗</span>
+                        <div class="f-text">
+                            <strong>ربط تلقائي مع خطة الأسبوع</strong>
+                            <span>كل ما الموظف يأشر على مهمة، تتحدث في Google Sheet تلقائياً</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🔔</span>
+                        <div class="f-text">
+                            <strong>تنبيهات التأخير</strong>
+                            <span>إذا مرّ الوقت المحدد ولم تُنجز المهمة، يروح إيميل تذكير للموظف والمشرف</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">📉</span>
+                        <div class="f-text">
+                            <strong>لوحة بيانات للإدارة</strong>
+                            <span>نظرة شاملة على جميع الموظفين الجدد ونسب الإنجاز</span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="f-icon">🤖</span>
+                        <div class="f-text">
+                            <strong>تحليل AI للأنماط</strong>
+                            <span>الذكاء الاصطناعي يكتشف المهام الأكثر تأخراً ويقترح تحسينات</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PAGE: ROADMAP ===== -->
+    <div class="page" id="page-roadmap">
+        <div class="section-title">🗓️ خارطة طريق التنفيذ</div>
+
+        <div class="roadmap-phase">
+            <div class="phase-marker" style="background: var(--primary);">١</div>
+            <div class="phase-content">
+                <h4>المرحلة الأولى — الأساسيات</h4>
+                <div class="phase-time">✅ مكتمل</div>
+                <ul class="phase-tasks">
+                    <li>✅ خطة الأسبوع الأول التفاعلية</li>
+                    <li>✅ لوحة المشروع الرئيسية</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="roadmap-phase">
+            <div class="phase-marker" style="background: var(--blue);">٢</div>
+            <div class="phase-content">
+                <h4>المرحلة الثانية — المساعد الذكي والخريطة</h4>
+                <div class="phase-time">🔜 المرحلة التالية</div>
+                <ul class="phase-tasks">
+                    <li>🔲 بناء المساعد الشخصي بالـ AI</li>
+                    <li>🔲 تصميم الخريطة التفاعلية</li>
+                    <li>🔲 ربط المساعد مع الخريطة</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="roadmap-phase">
+            <div class="phase-marker" style="background: var(--purple);">٣</div>
+            <div class="phase-content">
+                <h4>المرحلة الثالثة — الاستبيان والإيميلات</h4>
+                <div class="phase-time">📅 قادمة</div>
+                <ul class="phase-tasks">
+                    <li>🔲 تصميم استبيان ٣٠ يوم</li>
+                    <li>🔲 تطوير قوالب الإيميلات الذكية</li>
+                    <li>🔲 بناء نظام تنبيه فترة التجربة</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="roadmap-phase">
+            <div class="phase-marker" style="background: var(--orange);">٤</div>
+            <div class="phase-content">
+                <h4>المرحلة الرابعة — التكامل والتتبع</h4>
+                <div class="phase-time">📅 قادمة</div>
+                <ul class="phase-tasks">
+                    <li>🔲 ربط Google Sheets بتتبع المهام</li>
+                    <li>🔲 نظام التنبيهات التلقائية</li>
+                    <li>🔲 لوحة بيانات الإدارة</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="roadmap-phase">
+            <div class="phase-marker" style="background: var(--accent);">٥</div>
+            <div class="phase-content">
+                <h4>المرحلة الخامسة — الإطلاق والتحسين</h4>
+                <div class="phase-time">📅 قادمة</div>
+                <ul class="phase-tasks">
+                    <li>🔲 اختبار شامل على مجموعة تجريبية</li>
+                    <li>🔲 تدريب فريق التهيئة</li>
+                    <li>🔲 الإطلاق الرسمي</li>
+                    <li>🔲 تحسين مستمر بناءً على البيانات</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <strong>مدينة الملك سعود الطبية</strong> — تجمع الرياض الصحي الأول | مشروع التهيئة والتوجيه المدعوم بالذكاء الاصطناعي
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            window.scrollTo({ top: 200, behavior: 'smooth' });
+        }
+
+        function rateStars(container, e) {
+            const stars = container.querySelectorAll('.star');
+            const clicked = e.target;
+            if (!clicked.classList.contains('star')) return;
+            const index = Array.from(stars).indexOf(clicked);
+            stars.forEach((s, i) => {
+                s.classList.toggle('active', i <= index);
+            });
+        }
+
+        /* ===== Logo Drag & Drop ===== */
+        const savedState = {};
+
+        function loadLogo(input, zoneId) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) { setLogo(zoneId, e.target.result); };
+            reader.readAsDataURL(file);
+        }
+
+        function setLogo(zoneId, dataUrl) {
+            const zone = document.getElementById(zoneId);
+            zone.classList.add('has-logo');
+            const existingImg = zone.querySelector('img');
+            if (existingImg) existingImg.remove();
+            const img = document.createElement('img');
+            img.src = dataUrl;
+            zone.appendChild(img);
+            savedState[zoneId] = dataUrl;
+        }
+
+        document.querySelectorAll('.logo-drop-zone').forEach(zone => {
+            zone.addEventListener('dragover', e => { e.preventDefault(); zone.style.borderColor = 'rgba(255,255,255,0.8)'; });
+            zone.addEventListener('dragleave', () => { zone.style.borderColor = ''; });
+            zone.addEventListener('drop', e => {
+                e.preventDefault();
+                zone.style.borderColor = '';
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = ev => setLogo(zone.id, ev.target.result);
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
